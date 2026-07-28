@@ -1,0 +1,47 @@
+---
+import site from "../data/site.json";
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = "Ready to get started?",
+  text = "Call the studio or register online. We will match your student with the right tutor and time.",
+} = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="container inner">
+    <div>
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="buttons">
+      <a class="btn btn-light" href={`tel:${site.phoneRaw}`}>Call {site.phone}</a>
+      <a class="btn btn-primary" href="/login-register">Register Online</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    background: linear-gradient(120deg, var(--dark-red), var(--red));
+    color: var(--white);
+    padding-block: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  h2 { color: var(--white); margin-bottom: 0.35rem; }
+  p { margin: 0; max-width: 34rem; color: var(--pale-orange); }
+  .buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .cta-band .btn-primary {
+    background: var(--yellow);
+    color: var(--ink);
+  }
+  .cta-band .btn-primary:hover { background: var(--light-orange); }
+</style>

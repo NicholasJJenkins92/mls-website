@@ -1,0 +1,53 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import site from "../data/site.json";
+---
+
+<Base
+  title="Login / Register | My Learning Studio"
+  description="New families can register for tutoring online, and current students can log in to manage their schedule."
+>
+  <PageHero
+    eyebrow="student portal"
+    title="Login / Register"
+    lead="New families can register below, and current students can log in to view schedules and invoices. Need a hand? Call us and we will walk you through it."
+  />
+
+  <section class="section">
+    <div class="container portal-grid">
+      <div class="card">
+        <h2>New Family &amp; Student Registration</h2>
+        <p>
+          Tell us about your student and we will follow up to match a tutor and
+          schedule.
+        </p>
+        <script is:inline src={site.tutorbird.registration}></script>
+      </div>
+      <div class="card">
+        <h2>Current Student Login</h2>
+        <p>Access your schedule, sessions, and account.</p>
+        <script is:inline src={site.tutorbird.login}></script>
+      </div>
+    </div>
+    <div class="container">
+      <div class="callout" style="margin-top: 2rem;">
+        <p>
+          Trouble with the portal? Call
+          <a href={`tel:${site.phoneRaw}`}><strong>{site.phone}</strong></a> or
+          email <a href={`mailto:${site.email}`}>{site.email}</a> and our office
+          staff will take care of you.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .portal-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: start;
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import site from "../data/site.json";
+---
+
+<Base
+  title="1-on-1 Tutoring for All Ages | My Learning Studio, Riverside"
+  description="Award-winning private tutors, in person or virtual. All subjects, all grades, and adults too. 7 days a week, 9 AM to 9 PM, with no contracts."
+>
+  <PageHero
+    eyebrow="private tutoring"
+    title="Award-Winning Private Tutors, In Person or Virtual"
+    lead="Personalized 1-on-1 instruction from highly trained professionals, every one of them fingerprinted and background-checked. We have been voted BEST Tutoring Service every single year since 2007."
+  />
+
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <h2>How it works</h2>
+        <ul class="checks">
+          <li><strong>55-minute sessions</strong>, typically two days a week (Monday/Wednesday or Tuesday/Thursday).</li>
+          <li><strong>In person or virtual.</strong> Visit us at {site.address.street} in Riverside, or meet your tutor on Zoom or FaceTime. Virtual sessions can be recorded at no extra charge.</li>
+          <li><strong>Paid weekly, no contracts.</strong> Tutoring should earn your trust every week.</li>
+          <li><strong>Flexible scheduling</strong> with a 36-hour cancellation notice.</li>
+          <li><strong>Available 7 days a week</strong>, 9:00 AM to 9:00 PM.</li>
+        </ul>
+        <div class="callout">
+          <p>
+            <strong>Small group options are available</strong> if your student
+            works best alongside a friend or sibling.
+          </p>
+        </div>
+      </div>
+      <div class="photo-frame">
+        <img src="/images/reading-time.jpg" alt="A student reading with a tutor" width="671" height="960" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">any subject, any age</span>
+        <h2>What we tutor</h2>
+        <div class="stripe short" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="card-grid" style="margin-top: 2rem;">
+        <article class="card">
+          <h3>All Subjects, K-12 and Adults</h3>
+          <p>
+            Math, reading, writing, science, languages, and more, for any grade
+            or age. Adult learners and ESL students are always welcome.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Reading & Phonics</h3>
+          <p>
+            Specialized reading comprehension, writing, and phonics instruction
+            for grades 1-6, built on proven foundational-skills methods.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Test Preparation</h3>
+          <p>
+            SAT, PSAT, and ACT prep, plus ASVAB, GED, and CHSPE. Strategy,
+            practice, and confidence for test day.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Assessments</h3>
+          <p>
+            Math and reading assessments that show exactly where your student
+            stands and what to work on next.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Find your student's tutor"
+    text="Register online and we will match your student with the right tutor, or call the studio and we will walk you through it."
+  />
+</Base>

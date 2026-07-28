@@ -1,0 +1,122 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import site from "../data/site.json";
+
+const charterSchools = [
+  "Springs Charter Schools", "Julian Charter School", "Reach Academy",
+  "Pacific Coast Academy", "River Springs Charter School", "LFCS Freedom Academy",
+  "Epic Charter", "Sage Oak Charter School", "Cabrillo Point Academy",
+  "Scale Leadership Academy", "Mission Vista Academy", "Compass Charter School",
+  "Granite Mountain Charter School", "Excel Academy", "ILead Exploration",
+  "Sky Mountain Charter", "Elite Academy", "SoCal Scholars Academy",
+  "Suncoast Preparatory Academy", "Gorman Learning Charter Network", "Taylion Academy",
+];
+
+const classes = [
+  { title: "STEAM Science", blurb: "Hands-on science, technology, engineering, art, and math." },
+  { title: "Creative Arts & Crafts", blurb: "Painting, sculpting, and making things worth taking home." },
+  { title: "Reading, Writing, & Riddles", blurb: "Wordplay and puzzles that build real literacy skills." },
+  { title: "Reading + Math = Fun", blurb: "Math-focused stories, games, and crafts." },
+];
+
+const comingSoon = [
+  "Life Skills", "Science of Magic", "Speaking Skills", "Painting",
+  "Creative Writing", "History: Story of the World", "Games",
+];
+---
+
+<Base
+  title="Home Charter School Enrichment | My Learning Studio"
+  description={`${site.charter.semester} full-day enrichment for ${site.charter.grades} in Riverside. STEAM science, creative arts, reading and writing. Approved vendor for 20+ charter schools. ${site.charter.price} per semester.`}
+>
+  <PageHero
+    eyebrow="for homeschool & charter families"
+    title={`${site.charter.semester} Full-Day Enrichment, ${site.charter.grades}`}
+    lead="Whether you're a budding artist or a curious scientist, we've got something interesting and intriguing to tantalize your mind."
+  />
+
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <h2>The details</h2>
+        <ul class="checks">
+          <li><strong>{site.charter.days}</strong>, {site.charter.time}</li>
+          <li><strong>{site.charter.price}</strong> for the {site.charter.semester.toLowerCase()} semester, {site.charter.priceNote}</li>
+          <li>Maximum <strong>{site.charter.maxStudents} students</strong> per day</li>
+          <li>All supplies included; students bring their own lunch</li>
+          <li>{site.charter.startNote}</li>
+          <li>Homework Club add-on, 2:00 to 2:45 PM</li>
+        </ul>
+        <div class="callout">
+          <p>
+            <strong>Using charter school funds?</strong> We are an approved
+            vendor for more than 20 charter schools. If yours is not on the
+            list below, call us and we will look into becoming one.
+          </p>
+        </div>
+      </div>
+      <div>
+        <h2>Weekly classes</h2>
+        <div class="mini-grid">
+          {classes.map((c) => (
+            <div class="mini-card">
+              <h3>{c.title}</h3>
+              <p>{c.blurb}</p>
+            </div>
+          ))}
+        </div>
+        <p style="margin-top: 1rem;">
+          <strong>Coming soon:</strong> {comingSoon.join(", ")}.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">bring your charter funds</span>
+        <h2>Approved vendor for these charter schools</h2>
+        <div class="stripe short" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <ul class="school-list">
+        {charterSchools.map((school) => <li>{school}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Enroll for fall"
+    text={`Spots are capped at ${site.charter.maxStudents} students per day. Call ${site.phone} to hold your student's place.`}
+  />
+</Base>
+
+<style>
+  .mini-grid { display: grid; gap: 1rem; }
+  .mini-card {
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    padding: 1rem 1.25rem;
+  }
+  .mini-card h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+  .mini-card p { margin: 0; color: var(--gray); }
+  .school-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.6rem 1.5rem;
+  }
+  .school-list li {
+    background: var(--white);
+    border-radius: 999px;
+    padding: 0.45em 1.1em;
+    box-shadow: var(--shadow);
+    font-weight: 600;
+    text-align: center;
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import site from "../data/site.json";
+import programData from "../data/programs.json";
+const programs = programData.programs.filter((p) => p.active);
+---
+
+<Base
+  title="Summer Programs & Academic Boot Camps | My Learning Studio"
+  description="Summer classes in Riverside: Academic Boot Camps for grades K-4, reading and writing groups, Spanish, creative arts, and more. Small groups, real results."
+>
+  <PageHero
+    eyebrow="summer at the studio"
+    title="Summer Programs That Keep Minds Growing"
+    lead="Small-group classes that bridge learning gaps, preview the year ahead, and sneak real learning into a whole lot of fun."
+  />
+
+  <section class="section">
+    <div class="container">
+      <article class="feature card">
+        <div class="feature-body">
+          <span class="chip solid">Flagship Program</span>
+          <h2>Academic Boot Camps</h2>
+          <p class="lead" style="margin-bottom: 1rem;">
+            Kinder through 4th grade. Two weeks of daily reading, writing, and
+            math that blend review of last year with a preview of the next.
+            90% of our students find they are fully prepared for the upcoming
+            school year without additional support.
+          </p>
+          <ul class="checks">
+            <li><strong>Session 1:</strong> {site.bootcamp.session1}</li>
+            <li><strong>Session 2:</strong> {site.bootcamp.session2}</li>
+            <li>Monday to Thursday, 9:00 AM to noon</li>
+            <li><strong>{site.bootcamp.price}</strong> per student, with a 5% cash discount available</li>
+          </ul>
+          <div class="feature-actions">
+            <a class="btn btn-primary" href="/academic-boot-camps-faq">Boot Camp FAQ</a>
+            <a class="btn btn-outline" href={`tel:${site.phoneRaw}`}>Call to Enroll</a>
+          </div>
+        </div>
+        <div class="photo-frame feature-photo">
+          <img src="/images/group-class.jpg" alt="A small group class at My Learning Studio" width="510" height="364" loading="lazy" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section tint">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">pick your adventure</span>
+        <h2>Summer group classes</h2>
+        <div class="stripe short" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="lead" style="margin-top: 1rem;">
+          Every class is led by our trained instructors in small groups at the
+          studio. Call {site.phone} to reserve a spot.
+        </p>
+      </div>
+      <div class="card-grid" style="margin-top: 2rem;">
+        {programs.map((program) => (
+          <article class="card program-card">
+            <div class="program-top">
+              <h3>{program.title}</h3>
+              <span class="chip">{program.price}</span>
+            </div>
+            <p class="grades">{program.grades}</p>
+            <p>{program.details}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Spots fill fast every summer"
+    text="Call the studio to enroll in boot camps and summer classes, or register online to get started."
+  />
+</Base>
+
+<style>
+  .feature {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+    align-items: center;
+    padding: clamp(1.5rem, 4vw, 2.75rem);
+  }
+  .feature .chip.solid { margin-bottom: 0.75rem; }
+  .feature-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.25rem; }
+  .feature-photo { transform: rotate(-1.5deg); }
+  @media (max-width: 800px) {
+    .feature { grid-template-columns: 1fr; }
+  }
+  .program-card .program-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 0.75rem;
+  }
+  .program-card .chip { flex-shrink: 0; }
+  .program-card .grades {
+    font-family: var(--font-marker);
+    color: var(--orange);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .program-card p:last-child { margin-bottom: 0; }
+</style>

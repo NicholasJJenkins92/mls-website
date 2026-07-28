@@ -1,0 +1,122 @@
+# Decap CMS configuration for My Learning Studio.
+# local_backend lets you edit at http://localhost:4331/admin while running
+# "npx decap-server" from the repo root. When the site is hosted, switch the
+# backend block to the host's git backend (e.g. git-gateway on Netlify).
+local_backend: true
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: "website/public/images"
+public_folder: "/images"
+site_url: "https://mylearningstudio.com"
+
+collections:
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General (phone, hours, banner)"
+        file: "website/src/data/site.json"
+        fields:
+          - { label: "Business Name", name: "name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Phone (display)", name: "phone", widget: "string" }
+          - { label: "Phone (digits only, for links)", name: "phoneRaw", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - label: "Address"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "Street", name: "street", widget: "string" }
+              - { label: "City, State ZIP", name: "cityStateZip", widget: "string" }
+              - { label: "Google Maps Link", name: "mapUrl", widget: "string" }
+          - label: "Hours"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "Tutoring Hours", name: "tutoring", widget: "string" }
+              - { label: "Office Hours (one line each)", name: "office", widget: "list", field: { label: "Line", name: "line", widget: "string" } }
+          - label: "Announcement Banner"
+            name: "announcement"
+            widget: "object"
+            fields:
+              - { label: "Show the banner?", name: "enabled", widget: "boolean" }
+              - { label: "Banner Text", name: "text", widget: "string" }
+              - { label: "Banner Link", name: "link", widget: "string", hint: "Where the banner goes when clicked, e.g. /summer" }
+          - label: "Awards"
+            name: "awards"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subline", name: "subline", widget: "string" }
+              - { label: "First Year Won", name: "sinceYear", widget: "number", value_type: "int" }
+          - label: "Social Links"
+            name: "socials"
+            widget: "object"
+            fields:
+              - { label: "Facebook", name: "facebook", widget: "string" }
+              - { label: "Instagram", name: "instagram", widget: "string" }
+              - { label: "Yelp", name: "yelp", widget: "string" }
+              - { label: "YouTube", name: "youtube", widget: "string" }
+          - label: "TutorBird Widgets"
+            name: "tutorbird"
+            widget: "object"
+            fields:
+              - { label: "Registration Widget URL", name: "registration", widget: "string" }
+              - { label: "Login Widget URL", name: "login", widget: "string" }
+          - label: "Full-Day Enrichment (Charter)"
+            name: "charter"
+            widget: "object"
+            fields:
+              - { label: "Semester", name: "semester", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Price Note", name: "priceNote", widget: "string" }
+              - { label: "Grades", name: "grades", widget: "string" }
+              - { label: "Days", name: "days", widget: "string" }
+              - { label: "Time", name: "time", widget: "string" }
+              - { label: "Start Note", name: "startNote", widget: "string" }
+              - { label: "Max Students Per Day", name: "maxStudents", widget: "number", value_type: "int" }
+          - label: "Boot Camps"
+            name: "bootcamp"
+            widget: "object"
+            fields:
+              - { label: "Session 1 Dates", name: "session1", widget: "string" }
+              - { label: "Session 2 Dates", name: "session2", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+      - name: "programs"
+        label: "Summer Programs"
+        file: "website/src/data/programs.json"
+        fields:
+          - label: "Programs"
+            name: "programs"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.price}})"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Grades / Ages", name: "grades", widget: "string" }
+              - { label: "Description", name: "details", widget: "text" }
+              - { label: "Show on site?", name: "active", widget: "boolean", default: true }
+      - name: "faqs"
+        label: "Boot Camp FAQs"
+        file: "website/src/data/faqs.json"
+        fields:
+          - label: "FAQs"
+            name: "faqs"
+            widget: "list"
+            summary: "{{fields.question}}"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "website/src/data/testimonials.json"
+        fields:
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            summary: "{{fields.quote}}"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Source (e.g. Google review)", name: "source", widget: "string" }

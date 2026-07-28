@@ -1,0 +1,54 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import site from "../data/site.json";
+---
+
+<Base
+  title="Parents & Guardians | My Learning Studio"
+  description="Session timing, pick-up guidelines, and office hours for My Learning Studio families in Riverside."
+>
+  <PageHero
+    eyebrow="for our families"
+    title="Parents & Guardians"
+    lead="The practical details that keep sessions running smoothly for every family."
+  />
+
+  <section class="section">
+    <div class="container" style="max-width: 820px;">
+      <h2>A reminder about sessions</h2>
+      <p>
+        Sessions begin at the top of the hour and run 55 minutes, except for
+        those starting at 6:05 PM, which end at 7:00 PM instead of 6:55 PM.
+      </p>
+      <p>
+        The five minutes after each session let your tutor reset and prepare
+        properly for their next student. If you would like to speak with your
+        student's tutor after a session, just let our staff know at the start
+        of the session and the tutor will be available at the 50-minute mark.
+      </p>
+      <div class="callout">
+        <p>
+          <strong>Drop-off and pick-up:</strong> please drop off no more than 10
+          minutes before a session and pick up within 10 minutes after it ends.
+        </p>
+      </div>
+
+      <h2>Studio office hours</h2>
+      <ul class="checks">
+        {site.hours.office.map((line) => <li>{line}</li>)}
+        <li>Tutoring runs {site.hours.tutoring}</li>
+        <li>Messages left outside business hours are always welcome</li>
+      </ul>
+
+      <p>
+        Questions? Call <a href={`tel:${site.phoneRaw}`}><strong>{site.phone}</strong></a>
+        or email <a href={`mailto:${site.email}`}>{site.email}</a>.
+        You can also review our <a href="/terms-and-conditions">Terms &amp; Conditions</a>.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

@@ -1,0 +1,89 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import site from "../data/site.json";
+import testimonialData from "../data/testimonials.json";
+---
+
+<Base
+  title="About Us | My Learning Studio, Riverside CA"
+  description="An award-winning tutoring center in Riverside since 2006. Voted BEST Tutoring Service every year, with specialized support for ADD, ADHD, and Auditory Processing Disorder."
+>
+  <PageHero
+    eyebrow="our story"
+    title="An Award-Winning Tutoring Center"
+    lead="My Learning Studio has served Riverside families since 2006, and Riverside has voted us BEST Tutoring Service every year since. That trust is the award we are proudest of."
+  />
+
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <h2>What we do</h2>
+        <ul class="checks">
+          <li>Private 1-on-1 tutoring for K-12, adults, and ESL students, in every subject</li>
+          <li>Test preparation: SAT, PSAT, ACT, and ASVAB</li>
+          <li>Academic classes in test-taking, study skills, science, languages, and the arts</li>
+          <li>Summer Common Core Boot Camps in small group settings</li>
+          <li>Open 7 days a week, 9 AM to 9 PM</li>
+        </ul>
+        <h2>Every kind of learner</h2>
+        <p>
+          We specialize in supporting students with ADD, ADHD, and Auditory
+          Processing Disorder, using multi-sensory learning techniques and
+          personalized attention. Every student learns; our job is to find the
+          way they learn best.
+        </p>
+        <div class="callout">
+          <p>
+            <strong>Recognition:</strong> Voted BEST by the Readers' Choice
+            Awards year after year since 2007, and named The Best Math Tutor in
+            BEST of the Inland Empire Magazine.
+          </p>
+        </div>
+      </div>
+      <div class="photo-stack">
+        <div class="photo-frame"><img src="/images/studio-front.jpg" alt="The My Learning Studio storefront" width="1600" height="1066" loading="lazy" /></div>
+        <div class="photo-frame"><img src="/images/group-class.jpg" alt="Students in a small group class" width="510" height="364" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">in their words</span>
+        <h2>What families say</h2>
+        <div class="stripe short" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="card-grid" style="margin-top: 2rem;">
+        {testimonialData.testimonials.map((t) => (
+          <blockquote class="card quote-card">
+            <p>&ldquo;{t.quote}&rdquo;</p>
+            <footer>{t.source}</footer>
+          </blockquote>
+        ))}
+      </div>
+      <p class="center" style="margin-top: 1.5rem;">
+        <a class="btn btn-outline" href={site.socials.yelp} target="_blank" rel="noopener">Yelp Reviews</a>
+        &nbsp;
+        <a class="btn btn-outline" href={site.socials.facebook} target="_blank" rel="noopener">Find Us on Facebook</a>
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .photo-stack { display: grid; gap: 1.5rem; }
+  .photo-stack .photo-frame:first-child { transform: rotate(-1deg); }
+  .photo-stack .photo-frame:last-child { transform: rotate(1.5deg); }
+  .quote-card { margin: 0; font-size: 1.15rem; }
+  .quote-card p { font-style: italic; }
+  .quote-card footer {
+    font-family: var(--font-marker);
+    color: var(--orange);
+    font-size: 0.95rem;
+  }
+</style>

@@ -1,0 +1,247 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+import site from "../data/site.json";
+import testimonialData from "../data/testimonials.json";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "EducationalOrganization"],
+  name: "My Learning Studio",
+  slogan: "Learning for Everyone",
+  foundingDate: "2006",
+  telephone: "+1-951-789-5402",
+  email: site.email,
+  url: "https://mylearningstudio.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "17086 Van Buren Blvd.",
+    addressLocality: "Riverside",
+    addressRegion: "CA",
+    postalCode: "92504",
+    addressCountry: "US",
+  },
+  openingHours: "Mo-Su 09:00-21:00",
+  sameAs: Object.values(site.socials),
+};
+---
+
+<Base
+  title="My Learning Studio | Award-Winning Tutoring in Riverside, CA"
+  description="Voted #1 tutoring service 19 years in a row. Private 1-on-1 tutoring for all ages and subjects, in person in Riverside or online, 7 days a week from 9 AM to 9 PM."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+
+  <section class="hero">
+    <div class="container two-col">
+      <div>
+        <span class="award-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l2.9 6.1 6.6.8-4.9 4.6 1.3 6.5L12 16.8 6.1 20l1.3-6.5L2.5 8.9l6.6-.8z"/></svg>
+          {site.awards.headline}, {site.awards.subline}
+        </span>
+        <h1>Learning for <span class="accent">Everyone</span></h1>
+        <p class="lead">
+          Award-winning 1-on-1 tutoring in Riverside, in person or online, for
+          every age and every subject. No contracts, just tutoring.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/login-register">Get Started</a>
+          <a class="btn btn-outline" href="/summer">Summer Programs</a>
+        </div>
+        <ul class="trust-row">
+          <li><strong>7 days</strong> a week, 9 AM to 9 PM</li>
+          <li><strong>All ages</strong>, K-12 to adult</li>
+          <li><strong>Since 2006</strong> in Riverside</li>
+        </ul>
+      </div>
+      <div class="photo-frame hero-photo">
+        <img src="/images/tutoring-session.jpg" alt="A tutor working one-on-one with a student at My Learning Studio" width="1600" height="1066" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">what we offer</span>
+        <h2>Find the right fit for your student</h2>
+        <div class="stripe short" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="card-grid" style="margin-top: 2rem;">
+        <article class="card">
+          <h3>1-on-1 Tutoring</h3>
+          <p>
+            Private 55-minute sessions in any subject, matched to how your
+            student learns best. In person or on Zoom and FaceTime.
+          </p>
+          <a class="btn btn-outline" href="/tutoring-for-all-ages">Learn More</a>
+        </article>
+        <article class="card">
+          <h3>Math Tutoring</h3>
+          <p>
+            Voted BEST Math Tutor in the Inland Empire. Elementary math through
+            Calculus AB and BC, taught the way your student learns.
+          </p>
+          <a class="btn btn-outline" href="/math-tutoring">Learn More</a>
+        </article>
+        <article class="card">
+          <h3>Summer Programs</h3>
+          <p>
+            Academic Boot Camps, reading and writing groups, Spanish, arts, and
+            more. Small groups, big confidence.
+          </p>
+          <a class="btn btn-outline" href="/summer">See Programs</a>
+        </article>
+        <article class="card">
+          <h3>Full-Day Enrichment</h3>
+          <p>
+            {site.charter.semester} enrichment for {site.charter.grades}, {site.charter.days}. Approved vendor for 20+ charter schools.
+          </p>
+          <a class="btn btn-outline" href="/home-charter-school">Learn More</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint">
+    <div class="container two-col">
+      <div class="photo-frame">
+        <img src="/images/studio-room.jpg" alt="Inside the My Learning Studio tutoring center" width="1600" height="1200" loading="lazy" />
+      </div>
+      <div>
+        <span class="eyebrow">why families choose us</span>
+        <h2>Tutoring that meets your student where they are</h2>
+        <ul class="checks">
+          <li><strong>No contracts.</strong> Pay weekly, stop any time. Just tutoring.</li>
+          <li><strong>Trusted tutors.</strong> Every tutor is fingerprinted and background-checked.</li>
+          <li><strong>Every learner.</strong> Experienced with ADD, ADHD, and Auditory Processing Disorder, using multi-sensory techniques and personalized attention.</li>
+          <li><strong>Flexible scheduling.</strong> Sessions typically twice a week, with 36-hour cancellation notice.</li>
+          <li><strong>Test prep that works.</strong> SAT, PSAT, ACT, ASVAB, GED, and CHSPE preparation.</li>
+        </ul>
+        <div class="callout">
+          <p>
+            <strong>MLS Outreach</strong>, our non-profit program, brings free and
+            discounted tutoring to low-income, foster, adopted, and at-risk
+            students. We also host a free Reading Assistance Program with the
+            Assistance League of Riverside.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">from our families</span>
+        <h2>Riverside has voted us BEST for 19 straight years</h2>
+        <div class="stripe short" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="card-grid" style="margin-top: 2rem;">
+        {testimonialData.testimonials.map((t) => (
+          <blockquote class="card quote-card">
+            <p>&ldquo;{t.quote}&rdquo;</p>
+            <footer>{t.source}</footer>
+          </blockquote>
+        ))}
+      </div>
+      <p class="center" style="margin-top: 1.5rem;">
+        <a class="btn btn-outline" href={site.socials.yelp} target="_blank" rel="noopener">Read Our 5-Star Reviews</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section tint" id="contact">
+    <div class="container two-col" style="align-items: start;">
+      <div>
+        <span class="eyebrow">get in touch</span>
+        <h2>Visit, call, or send us a note</h2>
+        <p>
+          <strong>{site.address.street}, {site.address.cityStateZip}</strong><br />
+          <a href={site.address.mapUrl} target="_blank" rel="noopener">Get directions</a>
+        </p>
+        <p>
+          <a href={`tel:${site.phoneRaw}`}><strong>{site.phone}</strong></a><br />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+        <h3>Hours</h3>
+        <p>
+          Tutoring: {site.hours.tutoring}<br />
+          {site.hours.office.map((line) => <>Office: {line}<br /></>)}
+        </p>
+      </div>
+      <form class="form-grid card" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
+        <p hidden><label>Do not fill this out: <input name="bot-field" /></label></p>
+        <div>
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name" />
+        </div>
+        <div>
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" required autocomplete="email" />
+        </div>
+        <div>
+          <label for="cf-phone">Phone (optional)</label>
+          <input id="cf-phone" name="phone" type="tel" autocomplete="tel" />
+        </div>
+        <div>
+          <label for="cf-message">How can we help?</label>
+          <textarea id="cf-message" name="message" rows="4" required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .hero {
+    background: linear-gradient(180deg, var(--white) 0%, var(--cream) 100%);
+    padding-block: clamp(2.5rem, 7vw, 5rem);
+  }
+  .award-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--pale-orange);
+    color: var(--dark-red);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    padding: 0.35em 1em;
+    margin-bottom: 1rem;
+  }
+  .award-badge svg { color: var(--orange); }
+  h1 .accent { color: var(--red); }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-block: 1.5rem;
+  }
+  .trust-row {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+    padding: 0;
+    margin: 0;
+    color: var(--gray);
+  }
+  .trust-row strong { color: var(--dark-red); }
+  .hero-photo { transform: rotate(1.5deg); }
+  .quote-card {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+  .quote-card p { font-style: italic; }
+  .quote-card footer {
+    font-family: var(--font-marker);
+    color: var(--orange);
+    font-size: 0.95rem;
+  }
+</style>

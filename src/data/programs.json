@@ -1,0 +1,109 @@
+{
+  "programs": [
+    {
+      "title": "Reading Comprehension Group",
+      "price": "$57",
+      "grades": "Elementary",
+      "details": "Four 55-minute sessions covering visualization, predictions, summarization, and character traits.",
+      "active": true
+    },
+    {
+      "title": "Reading + Math = Fun",
+      "price": "$57",
+      "grades": "Grades 1-5",
+      "details": "Math-focused books, worksheets, crafts, and games that make numbers something to look forward to. Four 55-minute sessions.",
+      "active": true
+    },
+    {
+      "title": "Reading Foundational Skills",
+      "price": "$196",
+      "grades": "Early readers",
+      "details": "Private 1-on-1 tutoring in phonics, blending, and decodable text. Four private sessions.",
+      "active": true
+    },
+    {
+      "title": "Reading Assistance Program",
+      "price": "$57",
+      "grades": "Grades 2-6",
+      "details": "For students reading below grade level, with a focus on comprehension and fluency. Four Friday sessions.",
+      "active": true
+    },
+    {
+      "title": "Creative Arts",
+      "price": "$57",
+      "grades": "Elementary",
+      "details": "Painting, sculpting, and wood crafting for hands-on learners.",
+      "active": true
+    },
+    {
+      "title": "The Art of Reading & Writing",
+      "price": "$57",
+      "grades": "Elementary",
+      "details": "Reading and writing instruction combined with art projects.",
+      "active": true
+    },
+    {
+      "title": "Writing Skills (Elementary & Middle School)",
+      "price": "$57",
+      "grades": "Elementary & MS",
+      "details": "Four Wednesday sessions building strong sentences, paragraphs, and confidence.",
+      "active": true
+    },
+    {
+      "title": "Writing Skills (8th Grade & Up)",
+      "price": "$42",
+      "grades": "8th+",
+      "details": "Two sessions on argumentative writing and essay construction.",
+      "active": true
+    },
+    {
+      "title": "Essay Writing (8th Grade & Up)",
+      "price": "$42",
+      "grades": "8th+",
+      "details": "Thesis development and MLA format, taught step by step.",
+      "active": true
+    },
+    {
+      "title": "Study Skills & Test Taking",
+      "price": "$57",
+      "grades": "Grade 7 to college",
+      "details": "Test prep workshop. Free with the purchase of 8 tutoring hours.",
+      "active": true
+    },
+    {
+      "title": "Resume & Cover Letter",
+      "price": "$42",
+      "grades": "High school",
+      "details": "Two 90-minute sessions to build a resume and cover letter that stand out.",
+      "active": true
+    },
+    {
+      "title": "Conversational Spanish",
+      "price": "$57",
+      "grades": "All ages",
+      "details": "Real-world dialogue you can actually use. June 9 to 18.",
+      "active": true
+    },
+    {
+      "title": "Multiplication Madness",
+      "price": "$57",
+      "grades": "Elementary",
+      "details": "Fluency strategies and problem-solving to master the times tables.",
+      "active": true
+    },
+    {
+      "title": "Money, Money, Money",
+      "price": "$27",
+      "grades": "Elementary",
+      "details": "Coin and bill recognition plus money word problems.",
+      "active": true
+    },
+    {
+      "title": "Babysitting Basics & Certificate",
+      "price": "$42",
+      "grades": "Teens",
+      "details": "A three-hour certification course for responsible sitters.",
+      "active": true
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+---
+import site from "../data/site.json";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="container cols">
+    <div>
+      <img src="/images/mls-logo.png" alt="My Learning Studio" width="200" height="80" class="logo" />
+      <p class="tagline">Learning for Everyone</p>
+      <p>
+        Award-winning tutoring in Riverside since 2006, in person and online,
+        for every age and every subject.
+      </p>
+    </div>
+    <div>
+      <h3>Visit Us</h3>
+      <address>
+        <a href={site.address.mapUrl} target="_blank" rel="noopener">
+          {site.address.street}<br />{site.address.cityStateZip}
+        </a>
+      </address>
+      <p>
+        <a href={`tel:${site.phoneRaw}`}>{site.phone}</a><br />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+      <h3>Hours</h3>
+      <p>
+        Tutoring: {site.hours.tutoring}<br />
+        {site.hours.office.map((line) => <>Office: {line}<br /></>)}
+      </p>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="/tutoring-for-all-ages">1-on-1 Tutoring</a></li>
+        <li><a href="/math-tutoring">Math Tutoring</a></li>
+        <li><a href="/summer">Summer Programs</a></li>
+        <li><a href="/academic-boot-camps-faq">Boot Camps FAQ</a></li>
+        <li><a href="/home-charter-school">Full-Day Enrichment</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/join-our-team">Join Our Team</a></li>
+        <li><a href="/parents-and-guardians">Parents & Guardians</a></li>
+        <li><a href="/login-register">Login / Register</a></li>
+        <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Connect</h3>
+      <ul>
+        <li><a href={site.socials.facebook} target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href={site.socials.instagram} target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href={site.socials.yelp} target="_blank" rel="noopener">Yelp</a></li>
+        <li><a href={site.socials.youtube} target="_blank" rel="noopener">YouTube</a></li>
+      </ul>
+      <h3>MLS Outreach</h3>
+      <p>
+        Our non-profit program brings free and discounted tutoring to
+        low-income, foster, adopted, and at-risk students.
+      </p>
+    </div>
+  </div>
+  <div class="legal">
+    <div class="container">
+      <p>Copyright &copy; 2006-{year} MyLearningStudio.com. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--dark-red);
+    color: var(--pale-orange);
+    margin-top: auto;
+  }
+  .site-footer .stripe { border-radius: 0; height: 8px; }
+  .cols {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding-block: 3rem;
+  }
+  .logo {
+    width: 200px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem;
+  }
+  .tagline {
+    font-family: var(--font-marker);
+    color: var(--yellow);
+    margin: 0.75rem 0 0.5rem;
+  }
+  h3 {
+    color: var(--white);
+    font-size: 1.05rem;
+    margin: 0 0 0.5rem;
+  }
+  h3 + p, h3 + ul { margin-bottom: 1.25rem; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin-bottom: 0.35rem; }
+  a { color: var(--pale-orange); text-decoration: none; }
+  a:hover { color: var(--yellow); }
+  address { font-style: normal; margin-bottom: 0.75rem; }
+  .legal {
+    border-top: 1px solid rgba(255, 243, 220, 0.25);
+    padding-block: 1rem;
+    font-size: 0.9rem;
+  }
+  .legal p { margin: 0; }
+</style>

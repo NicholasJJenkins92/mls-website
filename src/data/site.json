@@ -1,0 +1,54 @@
+{
+  "name": "My Learning Studio",
+  "tagline": "Learning for Everyone",
+  "phone": "(951) 789-5402",
+  "phoneRaw": "9517895402",
+  "email": "Info@MyLearningStudio.com",
+  "address": {
+    "street": "17086 Van Buren Blvd.",
+    "cityStateZip": "Riverside, CA 92504",
+    "mapUrl": "https://maps.google.com/?q=My+Learning+Studio,+17086+Van+Buren+Blvd,+Riverside,+CA+92504"
+  },
+  "hours": {
+    "tutoring": "7 days a week, 9:00 AM to 9:00 PM",
+    "office": [
+      "Monday to Thursday: 9:00 AM to 5:00 PM",
+      "Friday: 9:00 AM to 4:00 PM"
+    ]
+  },
+  "announcement": {
+    "enabled": true,
+    "text": "Summer classes now have openings. Sign up early to secure your spot!",
+    "link": "/summer"
+  },
+  "awards": {
+    "headline": "Voted #1 Tutoring Service",
+    "subline": "19 years in a row",
+    "sinceYear": 2006
+  },
+  "socials": {
+    "facebook": "https://www.facebook.com/MyLearningStudioRiverside/",
+    "instagram": "https://www.instagram.com/my_learning_studio/",
+    "yelp": "https://www.yelp.com/biz/njQhjrAOmEem7V2-I-0YQQ",
+    "youtube": "https://www.youtube.com/channel/UClRdfGZYLuU7VxViJ7KhIng"
+  },
+  "tutorbird": {
+    "registration": "https://app.tutorbird.com/Widget/v3/Registration.ashx?id=sch_5D1JL",
+    "login": "https://app.tutorbird.com/Widget/v2/Login.ashx"
+  },
+  "charter": {
+    "semester": "Fall 2026",
+    "price": "$997",
+    "priceNote": "per semester, no registration fee",
+    "grades": "1st to 5th grade",
+    "days": "Tuesday, Wednesday & Thursday",
+    "time": "9:00 AM to 2:00 PM",
+    "startNote": "Classes begin the week of 9/8/26",
+    "maxStudents": 12
+  },
+  "bootcamp": {
+    "session1": "June 8 to 18, 2026",
+    "session2": "July 13 to 23, 2026",
+    "price": "$357"
+  }
+}

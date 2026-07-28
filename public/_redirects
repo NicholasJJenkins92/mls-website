@@ -1,0 +1,3 @@
+# Old GoDaddy-era URLs to their new homes
+/login/register    /login-register    301
+/login%2Fregister  /login-register    301

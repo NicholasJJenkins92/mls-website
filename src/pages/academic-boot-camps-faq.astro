@@ -1,0 +1,52 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import faqData from "../data/faqs.json";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqData.faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+---
+
+<Base
+  title="Academic Boot Camps FAQ | My Learning Studio"
+  description="Everything parents ask about our two-week summer Academic Boot Camps: 2026 dates, daily schedule, grades, class sizes, curriculum, and pricing."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+
+  <PageHero
+    eyebrow="academic boot camps"
+    title="Boot Camps FAQ"
+    lead="Everything parents ask about our two-week summer camps, answered."
+  />
+
+  <section class="section">
+    <div class="container" style="max-width: 820px;">
+      {faqData.faqs.map((faq, ix) => (
+        <details class="faq" open={ix === 0}>
+          <summary>{faq.question}</summary>
+          <div class="faq-body"><p>{faq.answer}</p></div>
+        </details>
+      ))}
+      <div class="callout" style="margin-top: 2rem;">
+        <p>
+          Have a question we didn't cover? Call us at
+          <a href="tel:9517895402"><strong>(951) 789-5402</strong></a> and we
+          will be happy to help.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Reserve a boot camp spot"
+    text="Camps run in small groups of 5 to 8 students and fill up quickly. Call the studio to enroll."
+  />
+</Base>

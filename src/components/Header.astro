@@ -1,0 +1,270 @@
+---
+import site from "../data/site.json";
+const nav = [
+  {
+    label: "Tutoring",
+    items: [
+      { label: "1-on-1 Tutoring", href: "/tutoring-for-all-ages" },
+      { label: "Math Tutoring", href: "/math-tutoring" },
+    ],
+  },
+  {
+    label: "Summer",
+    items: [
+      { label: "Summer Programs", href: "/summer" },
+      { label: "Boot Camps FAQ", href: "/academic-boot-camps-faq" },
+    ],
+  },
+  { label: "Full-Day Enrichment", href: "/home-charter-school" },
+  {
+    label: "About",
+    items: [
+      { label: "About Us", href: "/about-us" },
+      { label: "Videos", href: "/videos" },
+      { label: "Join Our Team", href: "/join-our-team" },
+    ],
+  },
+  {
+    label: "Parents",
+    items: [
+      { label: "Parents & Guardians", href: "/parents-and-guardians" },
+      { label: "Terms & Conditions", href: "/terms-and-conditions" },
+    ],
+  },
+];
+const current = Astro.url.pathname;
+---
+
+<header class="site-header">
+  {site.announcement.enabled && (
+    <a class="announce" href={site.announcement.link}>
+      {site.announcement.text}
+    </a>
+  )}
+  <div class="bar">
+    <div class="container inner">
+      <a href="/" class="logo-link" aria-label="My Learning Studio home">
+        <img src="/images/mls-logo.png" alt="My Learning Studio: Learning for Everyone" width="180" height="72" />
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main">
+        <ul>
+          {nav.map((entry) =>
+            entry.items ? (
+              <li class="has-menu">
+                <button type="button" aria-haspopup="true">
+                  {entry.label}
+                  <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="menu">
+                  {entry.items.map((item) => (
+                    <li><a href={item.href} aria-current={current === item.href ? "page" : undefined}>{item.label}</a></li>
+                  ))}
+                </ul>
+              </li>
+            ) : (
+              <li><a href={entry.href} aria-current={current === entry.href ? "page" : undefined}>{entry.label}</a></li>
+            )
+          )}
+        </ul>
+      </nav>
+
+      <div class="actions">
+        <a class="phone" href={`tel:${site.phoneRaw}`}>{site.phone}</a>
+        <a class="btn btn-primary login" href="/login-register">Login / Register</a>
+      </div>
+
+      <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
+    <div class="container">
+      {nav.map((entry) =>
+        entry.items ? (
+          <div class="group">
+            <p class="group-label">{entry.label}</p>
+            {entry.items.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+          </div>
+        ) : (
+          <div class="group">
+            <a href={entry.href}>{entry.label}</a>
+          </div>
+        )
+      )}
+      <div class="group">
+        <a href="/login-register">Login / Register</a>
+        <a href={`tel:${site.phoneRaw}`}>Call {site.phone}</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const burger = document.querySelector(".hamburger");
+  const menu = document.getElementById("mobile-menu");
+  burger?.addEventListener("click", () => {
+    const open = burger.getAttribute("aria-expanded") === "true";
+    burger.setAttribute("aria-expanded", String(!open));
+    burger.classList.toggle("open", !open);
+    if (menu) menu.hidden = open;
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 2px 12px rgba(35, 35, 35, 0.08);
+  }
+  .announce {
+    display: block;
+    background: var(--dark-red);
+    color: var(--white);
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.45rem 1rem;
+    text-decoration: none;
+  }
+  .announce:hover { color: var(--yellow); }
+  .bar { background: var(--white); }
+  .inner {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    min-height: 76px;
+  }
+  .logo-link { flex-shrink: 0; }
+  .logo-link img { width: 180px; height: auto; }
+
+  .desktop-nav { margin-left: auto; }
+  .desktop-nav > ul {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .desktop-nav a,
+  .desktop-nav button {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0.5rem 0.7rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .desktop-nav a:hover,
+  .desktop-nav button:hover,
+  .desktop-nav a[aria-current="page"] { color: var(--red); }
+
+  .has-menu { position: relative; }
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lift);
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  }
+  .has-menu:hover .menu,
+  .has-menu:focus-within .menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .menu a { display: block; width: 100%; }
+  .menu a:hover { background: var(--pale-orange); }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+  .phone {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--dark-red);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn.login { font-size: 0.95rem; padding: 0.5em 1.2em; white-space: nowrap; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .hamburger span {
+    display: block;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--dark-red);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .mobile-menu {
+    background: var(--white);
+    border-top: 1px solid var(--pale-orange);
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+  }
+  .mobile-menu .group {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--pale-orange);
+  }
+  .group-label {
+    font-family: var(--font-marker);
+    color: var(--orange);
+    margin: 0 0 0.25rem;
+    font-size: 0.95rem;
+  }
+  .mobile-menu a {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.45rem 0;
+  }
+  .mobile-menu a:hover { color: var(--red); }
+
+  @media (max-width: 1020px) {
+    .desktop-nav, .actions { display: none; }
+    .hamburger { display: flex; margin-left: auto; }
+  }
+</style>

@@ -1,0 +1,94 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import site from "../data/site.json";
+
+const questions = [
+  "What is the highest level math you can tutor?",
+  "Tell me your experience tutoring/teaching?",
+  "What times are you available to work each day of the week? Please include every day of the week and do not attach your school schedule if you have one.",
+  "Can you tutor a language other than English? If yes, which one(s)?",
+  "Can you tutor High School bio, chem or physics?",
+  "Are you a Work Study Student?",
+  "Are you interested in volunteering or an internship?",
+  "Do you have reliable transportation and do you know where we are located?",
+];
+---
+
+<Base
+  title="Join Our Team | Tutor Jobs & Internships | My Learning Studio"
+  description="Tutor with an award-winning studio in Riverside. Openings for math, reading, and elementary instructors, plus volunteer and internship opportunities."
+>
+  <PageHero
+    eyebrow="work with us"
+    title="Join Our Team"
+    lead="Help students find their confidence at Riverside's award-winning tutoring studio. Most tutoring happens 3:00 to 9:00 PM Monday through Thursday, though the studio runs 7 days a week, 9 AM to 9 PM."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="card-grid">
+        <article class="card">
+          <h3>Math Instructors</h3>
+          <p>
+            Tutor through precalculus at minimum; geometry and the sciences are
+            a plus. If you can make math click, we want to meet you.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Reading Instructors</h3>
+          <p>
+            Experience is desired, but we provide training for qualified
+            candidates who love teaching kids to read.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Elementary Instructors</h3>
+          <p>
+            No experience required. What is required: genuinely loving working
+            with children.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Volunteers & Interns</h3>
+          <p>
+            High schoolers can earn an Honor Cord with 200 hours of service.
+            College students can take unpaid internships in teaching, social
+            media, administration, and management. Retirees who want to teach
+            reading, art, science, sign language, Spanish, or technology are
+            always welcome.
+          </p>
+        </article>
+      </div>
+      <div class="callout" style="margin-top: 2rem;">
+        <p>
+          All tutors, volunteers, and interns are fingerprinted and
+          background-checked. That is part of why families trust us.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint">
+    <div class="container" style="max-width: 820px;">
+      <h2>How to apply</h2>
+      <p>
+        Email your resume to
+        <a href={`mailto:${site.email}`}><strong>{site.email}</strong></a>
+        along with your answers to these eight questions:
+      </p>
+      <ol class="apply-list">
+        {questions.map((q) => <li>{q}</li>)}
+      </ol>
+      <p>
+        We do not keep resumes on file, so if you applied a while ago, please
+        apply again.
+      </p>
+      <a class="btn btn-primary" href={`mailto:${site.email}?subject=Tutor%20Application`}>Email Your Application</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .apply-list li { margin-bottom: 0.6rem; }
+</style>
