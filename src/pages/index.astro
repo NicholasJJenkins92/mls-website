@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import CtaBand from "../components/CtaBand.astro";
 import site from "../data/site.json";
@@ -45,8 +46,8 @@ const jsonLd = {
           every age and every subject. No contracts, just tutoring.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/login-register">Get Started</a>
-          <a class="btn btn-outline" href="/summer">Summer Programs</a>
+          <a class="btn btn-primary" href={withBase("/login-register")}>Get Started</a>
+          <a class="btn btn-outline" href={withBase("/summer")}>Summer Programs</a>
         </div>
         <ul class="trust-row">
           <li><strong>7 days</strong> a week, 9 AM to 9 PM</li>
@@ -55,7 +56,7 @@ const jsonLd = {
         </ul>
       </div>
       <div class="photo-frame hero-photo">
-        <img src="/images/tutoring-session.jpg" alt="A tutor working one-on-one with a student at My Learning Studio" width="1600" height="1066" loading="eager" />
+        <img src={withBase("/images/tutoring-session.jpg")} alt="A tutor working one-on-one with a student at My Learning Studio" width="1600" height="1066" loading="eager" />
       </div>
     </div>
   </section>
@@ -74,7 +75,7 @@ const jsonLd = {
             Private 55-minute sessions in any subject, matched to how your
             student learns best. In person or on Zoom and FaceTime.
           </p>
-          <a class="btn btn-outline" href="/tutoring-for-all-ages">Learn More</a>
+          <a class="btn btn-outline" href={withBase("/tutoring-for-all-ages")}>Learn More</a>
         </article>
         <article class="card">
           <h3>Math Tutoring</h3>
@@ -82,7 +83,7 @@ const jsonLd = {
             Voted BEST Math Tutor in the Inland Empire. Elementary math through
             Calculus AB and BC, taught the way your student learns.
           </p>
-          <a class="btn btn-outline" href="/math-tutoring">Learn More</a>
+          <a class="btn btn-outline" href={withBase("/math-tutoring")}>Learn More</a>
         </article>
         <article class="card">
           <h3>Summer Programs</h3>
@@ -90,14 +91,14 @@ const jsonLd = {
             Academic Boot Camps, reading and writing groups, Spanish, arts, and
             more. Small groups, big confidence.
           </p>
-          <a class="btn btn-outline" href="/summer">See Programs</a>
+          <a class="btn btn-outline" href={withBase("/summer")}>See Programs</a>
         </article>
         <article class="card">
           <h3>Full-Day Enrichment</h3>
           <p>
             {site.charter.semester} enrichment for {site.charter.grades}, {site.charter.days}. Approved vendor for 20+ charter schools.
           </p>
-          <a class="btn btn-outline" href="/home-charter-school">Learn More</a>
+          <a class="btn btn-outline" href={withBase("/home-charter-school")}>Learn More</a>
         </article>
       </div>
     </div>
@@ -106,7 +107,7 @@ const jsonLd = {
   <section class="section tint">
     <div class="container two-col">
       <div class="photo-frame">
-        <img src="/images/studio-room.jpg" alt="Inside the My Learning Studio tutoring center" width="1600" height="1200" loading="lazy" />
+        <img src={withBase("/images/studio-room.jpg")} alt="Inside the My Learning Studio tutoring center" width="1600" height="1200" loading="lazy" />
       </div>
       <div>
         <span class="eyebrow">why families choose us</span>

@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/url";
 import site from "../data/site.json";
 const nav = [
   {
@@ -32,19 +33,20 @@ const nav = [
     ],
   },
 ];
-const current = Astro.url.pathname;
+const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isCurrent = (href: string) => current === withBase(href).replace(/\/$/, "");
 ---
 
 <header class="site-header">
   {site.announcement.enabled && (
-    <a class="announce" href={site.announcement.link}>
+    <a class="announce" href={withBase(site.announcement.link)}>
       {site.announcement.text}
     </a>
   )}
   <div class="bar">
     <div class="container inner">
-      <a href="/" class="logo-link" aria-label="My Learning Studio home">
-        <img src="/images/mls-logo.png" alt="My Learning Studio: Learning for Everyone" width="180" height="72" />
+      <a href={withBase("/")} class="logo-link" aria-label="My Learning Studio home">
+        <img src={withBase("/images/mls-logo.png")} alt="My Learning Studio: Learning for Everyone" width="180" height="72" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main">
@@ -58,12 +60,12 @@ const current = Astro.url.pathname;
                 </button>
                 <ul class="menu">
                   {entry.items.map((item) => (
-                    <li><a href={item.href} aria-current={current === item.href ? "page" : undefined}>{item.label}</a></li>
+                    <li><a href={withBase(item.href)} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a></li>
                   ))}
                 </ul>
               </li>
             ) : (
-              <li><a href={entry.href} aria-current={current === entry.href ? "page" : undefined}>{entry.label}</a></li>
+              <li><a href={withBase(entry.href)} aria-current={isCurrent(entry.href) ? "page" : undefined}>{entry.label}</a></li>
             )
           )}
         </ul>
@@ -71,7 +73,7 @@ const current = Astro.url.pathname;
 
       <div class="actions">
         <a class="phone" href={`tel:${site.phoneRaw}`}>{site.phone}</a>
-        <a class="btn btn-primary login" href="/login-register">Login / Register</a>
+        <a class="btn btn-primary login" href={withBase("/login-register")}>Login / Register</a>
       </div>
 
       <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -87,17 +89,17 @@ const current = Astro.url.pathname;
           <div class="group">
             <p class="group-label">{entry.label}</p>
             {entry.items.map((item) => (
-              <a href={item.href}>{item.label}</a>
+              <a href={withBase(item.href)}>{item.label}</a>
             ))}
           </div>
         ) : (
           <div class="group">
-            <a href={entry.href}>{entry.label}</a>
+            <a href={withBase(entry.href)}>{entry.label}</a>
           </div>
         )
       )}
       <div class="group">
-        <a href="/login-register">Login / Register</a>
+        <a href={withBase("/login-register")}>Login / Register</a>
         <a href={`tel:${site.phoneRaw}`}>Call {site.phone}</a>
       </div>
     </div>

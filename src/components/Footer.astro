@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/url";
 import site from "../data/site.json";
 const year = new Date().getFullYear();
 ---
@@ -7,7 +8,7 @@ const year = new Date().getFullYear();
   <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
   <div class="container cols">
     <div>
-      <img src="/images/mls-logo.png" alt="My Learning Studio" width="200" height="80" class="logo" />
+      <img src={withBase("/images/mls-logo.png")} alt="My Learning Studio" width="200" height="80" class="logo" />
       <p class="tagline">Learning for Everyone</p>
       <p>
         Award-winning tutoring in Riverside since 2006, in person and online,
@@ -34,16 +35,16 @@ const year = new Date().getFullYear();
     <div>
       <h3>Explore</h3>
       <ul>
-        <li><a href="/tutoring-for-all-ages">1-on-1 Tutoring</a></li>
-        <li><a href="/math-tutoring">Math Tutoring</a></li>
-        <li><a href="/summer">Summer Programs</a></li>
-        <li><a href="/academic-boot-camps-faq">Boot Camps FAQ</a></li>
-        <li><a href="/home-charter-school">Full-Day Enrichment</a></li>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/join-our-team">Join Our Team</a></li>
-        <li><a href="/parents-and-guardians">Parents & Guardians</a></li>
-        <li><a href="/login-register">Login / Register</a></li>
-        <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+        <li><a href={withBase("/tutoring-for-all-ages")}>1-on-1 Tutoring</a></li>
+        <li><a href={withBase("/math-tutoring")}>Math Tutoring</a></li>
+        <li><a href={withBase("/summer")}>Summer Programs</a></li>
+        <li><a href={withBase("/academic-boot-camps-faq")}>Boot Camps FAQ</a></li>
+        <li><a href={withBase("/home-charter-school")}>Full-Day Enrichment</a></li>
+        <li><a href={withBase("/about-us")}>About Us</a></li>
+        <li><a href={withBase("/join-our-team")}>Join Our Team</a></li>
+        <li><a href={withBase("/parents-and-guardians")}>Parents & Guardians</a></li>
+        <li><a href={withBase("/login-register")}>Login / Register</a></li>
+        <li><a href={withBase("/terms-and-conditions")}>Terms & Conditions</a></li>
       </ul>
     </div>
     <div>

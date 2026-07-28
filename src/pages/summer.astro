@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import CtaBand from "../components/CtaBand.astro";
@@ -36,12 +37,12 @@ const programs = programData.programs.filter((p) => p.active);
             <li><strong>{site.bootcamp.price}</strong> per student, with a 5% cash discount available</li>
           </ul>
           <div class="feature-actions">
-            <a class="btn btn-primary" href="/academic-boot-camps-faq">Boot Camp FAQ</a>
+            <a class="btn btn-primary" href={withBase("/academic-boot-camps-faq")}>Boot Camp FAQ</a>
             <a class="btn btn-outline" href={`tel:${site.phoneRaw}`}>Call to Enroll</a>
           </div>
         </div>
         <div class="photo-frame feature-photo">
-          <img src="/images/group-class.jpg" alt="A small group class at My Learning Studio" width="510" height="364" loading="lazy" />
+          <img src={withBase("/images/group-class.jpg")} alt="A small group class at My Learning Studio" width="510" height="364" loading="lazy" />
         </div>
       </article>
     </div>

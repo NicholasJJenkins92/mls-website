@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/url";
 import "@fontsource/baloo-2/600.css";
 import "@fontsource/baloo-2/700.css";
 import "@fontsource/baloo-2/800.css";
@@ -15,7 +16,15 @@ interface Props {
   description: string;
 }
 const { title, description } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://mylearningstudio.com");
+
+// Canonical always points at the production domain, never the preview subpath,
+// so a preview deploy never competes with the real site in search.
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const livePath = base && Astro.url.pathname.startsWith(base)
+  ? Astro.url.pathname.slice(base.length) || "/"
+  : Astro.url.pathname;
+const canonical = new URL(livePath, "https://mylearningstudio.com");
+const isPreview = import.meta.env.PUBLIC_PREVIEW === "true";
 ---
 
 <!doctype html>
@@ -26,12 +35,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://mylearnings
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {isPreview && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL("/images/mls-logo.png", canonical)} />
+    <meta property="og:image" content={new URL(withBase("/images/mls-logo.png"), Astro.url)} />
     <meta name="theme-color" content="#AC2B1B" />
     <slot name="head" />
   </head>
