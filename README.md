@@ -1,43 +1,42 @@
-# Astro Starter Kit: Minimal
+# My Learning Studio website
+
+Redesigned website for My Learning Studio, an award-winning tutoring center in
+Riverside, California. Built with Astro as a static site.
+
+This repository is a **preview build** for review. It is published with
+`noindex` and its canonical URLs point at the production domain, so it never
+competes with the live site in search results.
+
+## Running it locally
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Editing content without touching code
 
-## 🚀 Project Structure
+Everything that changes seasonally lives in `src/data/` as plain JSON:
 
-Inside of your Astro project, you'll see the following folders and files:
+| File | What it controls |
+| --- | --- |
+| `site.json` | Phone, email, address, hours, announcement banner, social links, TutorBird widget URLs, enrichment and boot camp pricing |
+| `programs.json` | Summer program cards, with a per-program on/off switch |
+| `faqs.json` | Academic Boot Camps FAQ entries |
+| `testimonials.json` | Review quotes |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+Those files are also exposed through a point-and-click editor (Decap CMS) at
+`/admin`. To run the editor locally, start `npx decap-server` alongside the dev
+server. On the production host the editor needs a git backend configured in
+`public/admin/config.yml`.
+
+## Building
+
+The same source builds for the domain root and for a preview subpath:
+
+```sh
+npm run build                                   # production, served at /
+SITE_BASE=/mls-website/ PUBLIC_PREVIEW=true npm run build   # preview subpath
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Internal links go through `withBase()` in `src/lib/url.ts` so both cases work.
